@@ -14,7 +14,12 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
-
+require "active_storage/engine"
+# config/application.rb
+require "active_storage/attached"
+ActiveSupport.on_load(:active_record) do
+  extend ActiveStorage::Attached::Macros
+end
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -37,4 +42,5 @@ module Projetofinal
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+
 end
