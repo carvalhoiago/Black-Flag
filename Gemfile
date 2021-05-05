@@ -44,3 +44,6 @@ gem 'figaro'
 
 # authentication gems
 gem 'devise'
+
+# serializer - usado p/ melhorar o json das requisições GET
+gem 'active_model_serializers'
