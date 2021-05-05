@@ -3,7 +3,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
     create_table :games do |t|
       t.string :name
       t.float :price
-      t.int :publisher_id
+      t.integer :publisher_id
       t.text :description
 
       t.timestamps
