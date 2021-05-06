@@ -24,6 +24,14 @@ Rails.application.routes.draw do
         post '/create', to: 'publishers#create', as: 'create_publishers'
         patch '/update/:id', to: 'publishers#update', as: 'update_publisher'
       end
+
+      scope 'games/' do
+        get '/index', to: 'games#index', as: 'index_games'
+        get '/show/:id', to: 'games#show', as: 'show_games'
+        delete '/destroy/:id', to: 'games#destroy', as: 'destroy_games'
+        post '/create', to: 'games#create', as: 'create_games'
+        patch '/update/:id', to: 'games#update', as: 'update_gamequ'
+      end
     end
   end
 end
