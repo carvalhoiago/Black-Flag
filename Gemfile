@@ -47,3 +47,6 @@ gem 'devise'
 
 # serializer - usado p/ melhorar o json das requisições GET
 gem 'active_model_serializers'
+
+#Authentication simple token
+gem 'simple_token_authentication'
