@@ -8,6 +8,14 @@ Rails.application.routes.draw do
       scope 'users/' do
         get 'index', to: 'users#index', as: 'author_index'
       end
+
+      scope 'genres/' do
+        get '/index', to: 'genres#index', as: 'index_genres'
+        get '/show/:id', to: 'genres#show', as: 'show_genres'
+        delete '/destroy/:id', to: 'genres#destroy', as: 'destroy_genres'
+        post '/create', to: 'genres#create', as: 'create_genres'
+        patch '/update/:id', to: 'genres#update', as: 'update_genre'
+      end
     end
   end
 end
