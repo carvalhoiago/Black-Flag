@@ -44,6 +44,7 @@ gem 'figaro'
 
 # authentication gems
 gem 'devise'
+gem 'simple_token_authentication'
 
 # serializer - usado p/ melhorar o json das requisições GET
 gem 'active_model_serializers'

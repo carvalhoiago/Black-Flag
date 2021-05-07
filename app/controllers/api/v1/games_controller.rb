@@ -1,5 +1,5 @@
 class Api::V1::GamesController < ApplicationController
-
+  acts_as_token_authentication_handler_for User, only: %i[create]
   def index
     games = Game.all
     render json: games, status: :ok
@@ -29,8 +29,6 @@ class Api::V1::GamesController < ApplicationController
 
   def create
     game = Game.new(game_params)
-    print("Retornei                ")
-    print (game.name)
     if game.save
       render json: game, status: :created
     else
@@ -51,26 +49,6 @@ class Api::V1::GamesController < ApplicationController
 
   private
   def game_params
-    print ("OLAAAAAAAAAAAAAAAAA")
-    print (params[:publisher])
-    publisher_name = params[:publisher]
-    print (publisher_name.nil?)
-    g_params = params.require(:game).permit(:name, :trailer, :description, :price)
-    print("OIIIIIIIIIIIIIIIIii         ")
-    print (g_params)
-    if not publisher_name.nil?
-       publisher = Publisher.find_by name: publisher_name
-       print(publisher)
-      if not publisher.nil?
-       g_params[:publisher_id => publisher.id]
-      else
-        print ("PUBLICADORA N EXISTE")
-      publisher = Publisher.create(name: publisher_name)
-        g_params[:publisher_id => publisher.id]
-      end
-    end
-    print("DEPOIS DE TUDO:       ")
-    print (g_params)
-    return g_params
+    params.require(:game).permit(:name, :price, :publisher_id, :description, :trailer)
   end
 end

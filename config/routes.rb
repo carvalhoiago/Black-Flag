@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #
 
@@ -32,6 +32,16 @@ Rails.application.routes.draw do
         post '/create', to: 'games#create', as: 'create_games'
         patch '/update/:id', to: 'games#update', as: 'update_gamequ'
       end
+
+      scope 'users/' do
+        get '/index', to: 'users#index', as: 'index_users'
+        get '/show/:id', to: 'users#show', as: 'show_users'
+        delete '/destroy/:id', to: 'users#destroy', as: 'destroy_users'
+        post '/create', to: 'users#create', as: 'create_users'
+        patch '/update/:id', to: 'users#update', as: 'update_user'
+      end
+
+      post 'sign_in', to: 'sessions#sign_in'
     end
   end
 end
